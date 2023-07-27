@@ -9,26 +9,25 @@ import io.cucumber.java.en.When;
 import net.bytebuddy.asm.Advice;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class US04_EmmaStepDefs {
-
     LoginPage loginPage = new LoginPage();
+    CalendarPage_Emma calendarPageEmma;
 
-    CalendarPage_Emma calendarPageEmma = new CalendarPage_Emma();
-
-    @Given("user is logged in and on the calendar page of the application")
+    @Given("user is enters username and password and hits enter")
     public void user_is_logged_in_and_on_the_calendar_page_of_the_application() {
-        // Write code here that turns the phrase above into concrete actions
-        loginPage = new LoginPage();
-        calendarPageEmma =new CalendarPage_Emma();
-        //need login steps here
+        loginPage.login("posmanager36@info.com", "posmanager" + Keys.ENTER);
+        calendarPageEmma = new CalendarPage_Emma();
+    }
 
-        loginPage.login("posmanager36@info.com", "posmanager");
-
-        loginPage.loginButton.click();
-
-        calendarPageEmma.calendarLink.click();
-
+    @Then("user clicks on calendar link to access calendar module")
+    public void userClicksOnCalendarLinkToAccessCalendarModule() {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(calendarPageEmma.calendarLink)).click();
     }
 
 

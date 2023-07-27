@@ -16,12 +16,12 @@ public class LoginPage {
     @FindBy(id="login")
     public WebElement userName;
 
-
-
     @FindBy(id="password")
     public WebElement password;
 
-    @FindBy ( xpath = "//button[@type='submit']")
+
+
+    @FindBy(xpath = "//button[.='Log in']")
     public WebElement loginButton;
 
     @FindBy(name = "_submit")

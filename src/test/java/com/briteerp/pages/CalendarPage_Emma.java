@@ -11,7 +11,7 @@ public class CalendarPage_Emma {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(linkText = "Calendar")
+    @FindBy(xpath = "//a[@href='/web#menu_id=120&action=136']")
     public WebElement calendarLink;
 
     @FindBy (xpath = "//td[@class='fc-widget-content']//td[2]")
